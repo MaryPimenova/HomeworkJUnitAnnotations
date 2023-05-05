@@ -27,6 +27,7 @@ public class AldebaranPageTest extends TestBase {
     }
     @MethodSource("searchTestDataProvider")
     @ParameterizedTest(name = "For the entered search query: {0}, books with titles {1} are displayed")
+    @DisplayName("Checking for searching books by different word fragments")
     void bookSearchTest(String wordPartInput, List<String> bookTitles) {
         aldebaranPageComponent.searchInput(wordPartInput);
         aldebaranPageComponent.foundedElementsChecking(bookTitles);
