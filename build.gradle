@@ -14,9 +14,6 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:5.9.2"
 }
 
-/*tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}*/
 compileJava {
     options.encoding = 'UTF-8'
 }
