@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class AldebaranPageTest extends TestBase {
     @BeforeEach
     void openMainPage() {
-        aldebaranPageComponent.openMainPage("https://aldebaran.ru/")
+        aldebaranPage.openMainPage("https://aldebaran.ru/")
                 .footerRemoving();
     }
 
@@ -29,8 +29,8 @@ public class AldebaranPageTest extends TestBase {
     @ParameterizedTest(name = "For the entered search query: {0}, books with titles {1} are displayed")
     @DisplayName("Checking for searching books by different word fragments")
     void bookSearchTest(String wordPartInput, List<String> bookTitles) {
-        aldebaranPageComponent.searchInput(wordPartInput);
-        aldebaranPageComponent.foundedElementsChecking(bookTitles);
+        aldebaranPage.searchInput(wordPartInput)
+                .foundedElementsChecking(bookTitles);
 
     }
 
@@ -43,7 +43,7 @@ public class AldebaranPageTest extends TestBase {
             @Tag("NORMAL")
     })
     void loginErrorMessagePresenceTest(String newUserLogin, String expectedLoginErrorMessage) {
-        aldebaranPageComponent.openRegistrationForm()
+        aldebaranPage.openRegistrationForm()
                 .setNewUserLogin(newUserLogin)
                 .errorLoginMessageBoxPresenceChecking(expectedLoginErrorMessage);
 
@@ -61,7 +61,7 @@ public class AldebaranPageTest extends TestBase {
             @Tag("NORMAL")
     })
     void loginErrorMessageAbsenceTest(String newUserLogin) {
-        aldebaranPageComponent.openRegistrationForm()
+        aldebaranPage.openRegistrationForm()
                 .setNewUserLogin(newUserLogin)
                 .errorLoginMessageBoxAbsenceChecking();
 
@@ -85,7 +85,7 @@ public class AldebaranPageTest extends TestBase {
             @Tag("NORMAL")
     })
     void emailErrorMessagePresenceTest(String newUserEmail, String expectedEmailErrorMessage) {
-        aldebaranPageComponent.openRegistrationForm()
+        aldebaranPage.openRegistrationForm()
                 .setNewUserEmail(newUserEmail)
                 .errorEmailMessageBoxPresenceChecking(expectedEmailErrorMessage);
 
@@ -103,7 +103,7 @@ public class AldebaranPageTest extends TestBase {
             @Tag("NORMAL")
     })
     void emailErrorMessageAbsenceTest(String newUserEmail) {
-        aldebaranPageComponent.openRegistrationForm()
+        aldebaranPage.openRegistrationForm()
                 .setNewUserEmail(newUserEmail)
                 .errorEmailMessageBoxAbsenceChecking();
 
@@ -122,7 +122,7 @@ public class AldebaranPageTest extends TestBase {
     })
 
     void passwordErrorMessageTest(String newUserPassword) {
-        aldebaranPageComponent.openRegistrationForm()
+        aldebaranPage.openRegistrationForm()
                 .setNewUserPassword(newUserPassword);
 
     }

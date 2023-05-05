@@ -1,4 +1,4 @@
-package ru.maruspim.components;
+package ru.maruspim.pages;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
-public class AldebaranPageComponent {
+public class AldebaranPage {
 
     // Selenide elements / locator / etc
     SelenideElement pageHeaderText = $(".logo").sibling(0),
@@ -24,38 +24,38 @@ public class AldebaranPageComponent {
             searchField = $("#search");
 
     // Actions
-    public AldebaranPageComponent openMainPage(String pageUrl) {
+    public AldebaranPage openMainPage(String pageUrl) {
         open(pageUrl);
         pageHeaderText.shouldHave(text("Электронная библиотека книг"));
 
         return this;
     }
 
-    public AldebaranPageComponent footerRemoving () {
+    public AldebaranPage footerRemoving () {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
         return this;
     }
 
-    public AldebaranPageComponent openRegistrationForm () {
+    public AldebaranPage openRegistrationForm () {
         authorizationContainer.shouldHave(text("Вход / Регистрация")).click();;
         registrationMode.shouldHave(text("Регистрация")).click();
         return this;
     }
 
-    public AldebaranPageComponent setNewUserLogin (String newUserLogin) {
+    public AldebaranPage setNewUserLogin (String newUserLogin) {
         newUserLoginInput.setValue(newUserLogin).pressEnter();
 
         return this;
     }
-    public AldebaranPageComponent setNewUserEmail (String newUserEmail) {
+    public AldebaranPage setNewUserEmail (String newUserEmail) {
         newUserEmailInput.setValue(newUserEmail).pressEnter();
 
         return this;
     }
 
-    public AldebaranPageComponent setNewUserPassword (String newUserPassword) {
+    public AldebaranPage setNewUserPassword (String newUserPassword) {
         newUserPasswordInput.setValue(newUserPassword).pressEnter();
 
         return this;
@@ -79,13 +79,13 @@ public class AldebaranPageComponent {
 
     }
 
-    public AldebaranPageComponent searchInput (String searchInput) {
+    public AldebaranPage searchInput (String searchInput) {
         searchField.setValue(searchInput).pressEnter();
 
         return this;
     }
 
-    public AldebaranPageComponent foundedElementsChecking (List<String> foundedElements) {
+    public AldebaranPage foundedElementsChecking (List<String> foundedElements) {
         $$(".wooklist p[class=booktitle]").shouldHave(CollectionCondition.texts(foundedElements));
 
         return this;
